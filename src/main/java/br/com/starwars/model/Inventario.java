@@ -1,7 +1,6 @@
 package br.com.starwars.model;
 
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -20,11 +21,11 @@ public class Inventario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
+	
+	@NotNull(message = "O atributo tipoInventario do produto é obrigatório")
+	@Size(min = 3, message = "O atributo nome do produto deve min=3 caracteres")
+	private String tipoInventario;
 
-	
-	
-	@Column(columnDefinition = "integer default 0")
-	private int qtd;
 	
 	
 	
@@ -71,13 +72,12 @@ public class Inventario {
 		this.id = id;
 	}
 
-	
-	public int getQtd() {
-		return qtd;
+	public String getTipoInventario() {
+		return tipoInventario;
 	}
 
-	public void setQtd(int qtd) {
-		this.qtd = qtd;
+	public void setTipoInventario(String tipoInventario) {
+		this.tipoInventario = tipoInventario;
 	}
 
 	public Recurso getRecurso() {
