@@ -1,5 +1,7 @@
 package br.com.starwars.model;
 
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -20,9 +20,13 @@ public class Inventario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@NotNull(message = "O atributo quantidade eh obrigatorio")
-	@Size(min = 1, max = 8, message = "Voce so pode conter no maximo 8 itens ")
+
+	
+	
+	@Column(columnDefinition = "integer default 0")
 	private int qtd;
+	
+	
 	
 	
 	/*         RELACIONAMENTO COM RECURSO
@@ -67,6 +71,7 @@ public class Inventario {
 		this.id = id;
 	}
 
+	
 	public int getQtd() {
 		return qtd;
 	}
@@ -90,6 +95,9 @@ public class Inventario {
 	public void setRebelde(Rebelde rebelde) {
 		this.rebelde = rebelde;
 	}
+
+
+	
 	
 	
 

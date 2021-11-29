@@ -12,6 +12,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "tb_rebelde")
 public class Rebelde {
@@ -21,7 +23,7 @@ public class Rebelde {
 	private long id;
 
 	@NotNull(message = "O atributo nome deve conter pelo menos 5 caracteres")
-	@Size(min = 3, max = 15, message = "O atributo nome deve conter entre 5 e 15 caracteres")
+	@Size(min = 3, max = 30, message = "O atributo nome deve conter entre 5 e 15 caracteres")
 	private String nome;
 
 	@NotNull(message = "O atributo idade eh obrigatorio")
@@ -30,7 +32,7 @@ public class Rebelde {
 	
 	@NotNull(message = "O atributo genero deve ser M F ou O (Masculino/Feminino/Outro)")
 	@Size(min = 1, max = 1, message = "O atributo genero deve conter apenas 1 caracter")
-	private char genero;
+	private String genero;
 
 	@Column(columnDefinition = "integer default 0")
 	private int strikes;
@@ -42,11 +44,13 @@ public class Rebelde {
 	
 	// RELACIONAMENTOS----------------------------------------------------
 	
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "rebelde")
+	@OneToOne
+	@JsonIgnoreProperties("rebelde")
 	private Inventario inventario;
 
 	
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "rebelde")
+	@OneToOne
+	@JsonIgnoreProperties("rebelde")
 	private Localizacao localizacao;
 
 	// FIM DOS RELACIONAMENTOS--------------------------------------------
@@ -76,11 +80,11 @@ public class Rebelde {
 		this.nome = nome;
 	}
 
-	public char getGenero() {
+	public String getGenero() {
 		return genero;
 	}
 
-	public void setGenero(char genero) {
+	public void setGenero(String genero) {
 		this.genero = genero;
 	}
 

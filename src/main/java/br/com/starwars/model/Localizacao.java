@@ -28,7 +28,7 @@ public class Localizacao {
 	private String longitude;
 	
 	@NotNull(message = "O atributo nome eh obrigatorio")
-	@Size(min = 3, max = 15, message = "O atributo nome deve conter no min=3 e no  max=15 caracteres")
+	@Size(min = 3, max = 30, message = "O atributo nome deve conter no min=3 e no  max=15 caracteres")
 	private String nomeGalaxia;
 
 	//RELACIONAMENTOS---------------------------------------------------------------------------------

@@ -13,57 +13,51 @@ import br.com.starwars.repository.RebeldeRepository;
 
 @Service
 public class RebeldeService {
-	
+
 	@Autowired
 	private RebeldeRepository rebeldeRepository;
-	
+
 	public List<Rebelde> listarRebeldes() {
 
 		return rebeldeRepository.findAll();
 	}
-	
-	
+
 	public Optional<Rebelde> buscarRebeldeId(long id) {
 
 		return rebeldeRepository.findById(id);
 	}
-	
-	
+
 	public Optional<Rebelde> cadastrarRebelde(Rebelde rebelde) {
 
 		if (rebeldeRepository.findByNome(rebelde.getNome()).isPresent())
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Esse nome já exite!,null");
 
-
 		return Optional.of(rebeldeRepository.save(rebelde));
 	}
-	
-	
+
 	
 	public Optional<Rebelde> atualizarRebelde(Rebelde rebelde) {
+		if (rebeldeRepository.findById(rebelde.getId()).isPresent()) {
 
-		for (Rebelde rebel : this.listarRebeldes()) {
-			if (rebel.getNome().equals(rebel.getNome())) {
-				throw new ResponseStatusException(HttpStatus.CONFLICT, "Ja existe um rebelde com esse nome", null);
+			Optional<Rebelde> buscaUsuario = rebeldeRepository.findByNome(rebelde.getNome());
+
+			if (buscaUsuario.isPresent()) {
+
+				if (buscaUsuario.get().getId() != rebelde.getId())
+					throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário já existe!", null);
 			}
-		}
-
-		if (rebeldeRepository.findByNome(rebelde.getNome()).isPresent()) {
-
 			return Optional.of(rebeldeRepository.save(rebelde));
 		} else {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Rebelde não encontrado!", null);
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado!", null);
 		}
 	}
-	
-	
-/*VERIFICAR COMO DELETAR REBELDE
-	
-	public Optional<Rebelde> deleteRebelde(Rebelde rebelde) {
 
-			return Optional.of(rebeldeRepository.delete(rebelde));
-		}
-		*/
+	/*
+	 * VERIFICAR COMO DELETAR REBELDE
+	 * 
+	 * public Optional<Rebelde> deleteRebelde(Rebelde rebelde) {
+	 * 
+	 * return Optional.of(rebeldeRepository.delete(rebelde)); }
+	 */
 
-	
 }
