@@ -26,6 +26,16 @@ public class Inventario {
 	@Size(min = 3, message = "O atributo nome do produto deve min=3 caracteres")
 	private String tipoInventario;
 
+	public Inventario() {
+	}
+
+	public Inventario(Integer id, String tipoInventario, Rebelde rebelde, Recurso recurso) {
+		super();
+		this.id = id;
+		this.tipoInventario = tipoInventario;
+		this.rebelde = rebelde;
+		this.recurso = recurso;
+	}
 	
 	
 	

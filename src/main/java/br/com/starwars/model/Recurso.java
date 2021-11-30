@@ -31,6 +31,16 @@ public class Recurso {
 	private String tipoProduto;
 
 	
+	
+	public Recurso() {
+	}
+
+	public Recurso(Integer id, String nomeProduto, String tipoProduto) {
+		super();
+		this.id = id;
+		this.nomeProduto = nomeProduto;
+		this.tipoProduto = tipoProduto;
+	}
 
 	
 	
