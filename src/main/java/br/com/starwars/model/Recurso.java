@@ -15,7 +15,7 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "tb_inventario")
+@Table(name = "tb_recurso")
 public class Recurso {
 
 	@Id
@@ -30,9 +30,10 @@ public class Recurso {
 	@Size(min = 3, max = 15, message = "O atributo nome do produto deve min=3 max=15 caracteres")
 	private String tipoProduto;
 
-	@NotNull(message = "O atributo pontuacao eh obrigatorio")
-	private long pontos;
+	
 
+	
+	
 	
 	
 	// RELACIONAMENTOS---------------------------------------------------------------------------------
@@ -66,13 +67,6 @@ public class Recurso {
 		this.tipoProduto = tipoProduto;
 	}
 
-	public long getPontos() {
-		return pontos;
-	}
-
-	public void setPontos(long pontos) {
-		this.pontos = pontos;
-	}
 
 	public long getId() {
 		return id;
