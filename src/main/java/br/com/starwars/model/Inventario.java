@@ -27,6 +27,14 @@ public class Inventario {
 	
 	
 
+	public Recurso getRecurso() {
+		return recurso;
+	}
+
+	public void setRecurso(Recurso recurso) {
+		this.recurso = recurso;
+	}
+
 	public Inventario() {
 	}
 

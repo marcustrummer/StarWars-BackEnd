@@ -34,15 +34,20 @@ public class Rebelde {
 	@Size(min = 1, max = 1, message = "O atributo genero deve conter apenas 1 caracter")
 	private String genero;
 
-	@Column(columnDefinition = "integer default 0")
-	private int strikes;
+	 @Embedded
+	 private Localizacao localizacao;
 	
 	 @Embedded
 	 private Inventario inventario;
+	 
+	@Column(columnDefinition = "integer default 0")
+	private int strikes;
+	
+	
+
 
 	 
-	 @Embedded
-	 private Localizacao localizacao;
+
 	
 	
 	
