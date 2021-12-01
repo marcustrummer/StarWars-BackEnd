@@ -1,40 +1,41 @@
 package br.com.starwars.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-@Entity
-@Table(name = "tb_inventario")
+@Embeddable
 public class Inventario {
 	
+	
+	/*
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	*/
 	
 	
 	@NotNull(message = "O atributo tipoInventario do produto é obrigatório")
 	@Size(min = 3, message = "O atributo nome do produto deve min=3 caracteres")
 	private String tipoInventario;
+	
+	@Embedded
+	private Recurso recurso;
+	
+	
+	
 
 	public Inventario() {
 	}
 
 	public Inventario(Integer id, String tipoInventario, Rebelde rebelde, Recurso recurso) {
 		super();
-		this.id = id;
+		//this.id = id;
 		this.tipoInventario = tipoInventario;
-		this.rebelde = rebelde;
-		this.recurso = recurso;
+	//  this.rebelde = rebelde;
+	//	this.recurso = recurso;
 	}
 	
 	
@@ -55,7 +56,7 @@ public class Inventario {
 
 
 	
-	
+	/*
 	//RELACIONAMENTOS---------------------------------------------------------------------------------
 	
 	@ManyToOne
@@ -67,21 +68,14 @@ public class Inventario {
 	private Rebelde rebelde;
 	
 	//FIM DOS RELACIONAMENTOS--------------------------------------------------------------------------
-
+*/
 	
 	
 	
 	
 	
 	//Getters and Setters
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
+	
 	public String getTipoInventario() {
 		return tipoInventario;
 	}
@@ -89,7 +83,7 @@ public class Inventario {
 	public void setTipoInventario(String tipoInventario) {
 		this.tipoInventario = tipoInventario;
 	}
-
+/*
 	public Recurso getRecurso() {
 		return recurso;
 	}
@@ -104,7 +98,7 @@ public class Inventario {
 
 	public void setRebelde(Rebelde rebelde) {
 		this.rebelde = rebelde;
-	}
+	}*/
 
 
 	

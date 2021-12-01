@@ -3,6 +3,7 @@ package br.com.starwars.model;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,13 +15,9 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Entity
-@Table(name = "tb_recurso")
-public class Recurso {
+@Embeddable
+public class Recurso {   // Recurso sao os itens que podem ser alocados no inventario ex : armas, alimentos, etc
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
 	
 	@NotNull(message = "O atributo nomeProduto do produto eh obrigatorio")
 	@Size(min = 3, max = 15, message = "O atributo nome do produto deve min=3 max=15 caracteres")
@@ -37,7 +34,7 @@ public class Recurso {
 
 	public Recurso(Integer id, String nomeProduto, String tipoProduto) {
 		super();
-		this.id = id;
+		//this.id = id;
 		this.nomeProduto = nomeProduto;
 		this.tipoProduto = tipoProduto;
 	}
@@ -46,6 +43,7 @@ public class Recurso {
 	
 	
 	
+	/*
 	// RELACIONAMENTOS---------------------------------------------------------------------------------
 
 	@OneToMany(mappedBy = "recurso", cascade = CascadeType.ALL)
@@ -54,7 +52,7 @@ public class Recurso {
 
 	// FIM DOS  RELACIONAMENTOS--------------------------------------------------------------------------
 
-	
+	*/
 	
 	
 	
@@ -77,7 +75,7 @@ public class Recurso {
 		this.tipoProduto = tipoProduto;
 	}
 
-
+	/*
 	public long getId() {
 		return id;
 	}
@@ -85,14 +83,14 @@ public class Recurso {
 	public void setId(long id) {
 		this.id = id;
 	}
-
+	
 	public List<Inventario> getInventario() {
 		return inventario;
 	}
 
 	public void setInventario(List<Inventario> inventario) {
 		this.inventario = inventario;
-	}
+	}*/
 	
 	
 	

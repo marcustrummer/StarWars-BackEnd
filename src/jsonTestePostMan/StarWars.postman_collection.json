@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "8caeebde-9982-4b80-9b7b-617a672bedb6",
+		"name": "StarWars",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cadastrar inventario com relacionamento",
+			"item": [
+				{
+					"name": "http://localhost:8080/inventarios/",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 1,\r\n        \"qtd\": 0,\r\n        \"recurso\": {\r\n            \"id\": 1,\r\n            \"nomeProduto\": \"Agua\",\r\n            \"tipoProduto\": \"Alimento\",\r\n            \"pontos\": 2\r\n        },\r\n        \"rebelde\": {\r\n            \"id\": 1,\r\n            \"nome\": \"Princess Leia\",\r\n            \"idade\": 60,\r\n            \"genero\": \"F\",\r\n            \"strikes\": 0\r\n        },\r\n        \"localizacao\": {\r\n            \"id\": 1,\r\n    \"latitude\": \"278.09°\",\r\n    \"longitude\": \"-178.09°\",\r\n    \"nomeGalaxia\": \"República Galáctica\"\r\n        }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/inventarios/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"inventarios",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cadastrar rebelde sem rel",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Princess Leia\",\r\n  \"idade\": 60,\r\n  \"genero\": \"F\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rebeldes/cadastrar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rebeldes",
+						"cadastrar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllRebeldes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/rebeldes/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rebeldes",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar Rebelde",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"id\": 1,\r\n        \"nome\": \"Princessa\",\r\n        \"idade\": 60,\r\n        \"genero\": \"F\",\r\n        \"strikes\": 1,\r\n        \"inventario\": null,\r\n        \"localizacao\": null\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rebeldes/atualizar/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rebeldes",
+						"atualizar",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastrar rebelde com relacionamento",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nomeProduto\": \"Agua\",\r\n    \"tipoProduto\": \"Alimento\",\r\n    \"pontos\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/recursos/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"recursos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastrar localizacao",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}

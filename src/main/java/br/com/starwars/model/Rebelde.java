@@ -1,16 +1,18 @@
 package br.com.starwars.model;
 
+
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 @Entity
 @Table(name = "tb_rebelde")
@@ -34,25 +36,14 @@ public class Rebelde {
 
 	@Column(columnDefinition = "integer default 0")
 	private int strikes;
+	
+	 @Embedded
+	 private Inventario inventario;
 
+	 
+	 @Embedded
+	 private Localizacao localizacao;
 	
-	
-	
-	
-	
-	// RELACIONAMENTOS----------------------------------------------------
-	
-	@OneToOne
-	@JsonIgnoreProperties("rebelde")
-	private Inventario inventario;
-
-	
-	@OneToOne
-	@JsonIgnoreProperties("rebelde")
-	private Localizacao localizacao;
-
-	// FIM DOS RELACIONAMENTOS--------------------------------------------
-
 	
 	
 	
@@ -117,6 +108,8 @@ public class Rebelde {
 	public void setLocalizacao(Localizacao localizacao) {
 		this.localizacao = localizacao;
 	}
+	
+	
 	
 	
 	

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import br.com.starwars.model.Rebelde;
 import br.com.starwars.service.RebeldeService;
 
@@ -58,6 +59,18 @@ public class RebeldeController {
 				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
 	
+	
+	
+	
+	//Report rebelde
+	@PutMapping("/report/{id}")
+	public ResponseEntity<Rebelde> putStrikeRebeldeId (@PathVariable Long id){
+		
+		return ResponseEntity.status(HttpStatus.OK).body(rebeldeService.reportarRebelde(id));
+	
+	}
+	
+
 	
 	
 	

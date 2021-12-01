@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.starwars.model.Inventario;
 import br.com.starwars.repository.InventarioRepository;
+import br.com.starwars.service.RebeldeService;
 
 @RestController
 @RequestMapping("/inventarios")
@@ -25,6 +26,9 @@ public class InventarioController {
 
 	@Autowired
 	private InventarioRepository inventarioRepository;
+	
+	@Autowired
+	private RebeldeService rebeldeService;
 
 	
 //---------CONFERIR NECESSIDADE DE TER /ALL E /ID

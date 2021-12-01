@@ -15,6 +15,8 @@ public interface RebeldeRepository extends JpaRepository<Rebelde, Long> {
 
 	public List<Rebelde> findAllByNomeContainingIgnoreCase(String nome);
 
+	public Rebelde save(Optional<Rebelde> rebelde);
+
 	//public Optional<Rebelde> deleteRebelde(long id);
 
 }
