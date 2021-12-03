@@ -9,14 +9,9 @@ import org.springframework.stereotype.Repository;
 import br.com.starwars.model.Rebelde;
 
 @Repository
-public interface RebeldeRepository extends JpaRepository<Rebelde, Long> {
+public interface RebeldeRepository extends JpaRepository<Rebelde, Integer> {
 
-	public Optional<Rebelde> findByNome(String nome);
+	Optional<Rebelde> findByNome(String nome);
 
-	public List<Rebelde> findAllByNomeContainingIgnoreCase(String nome);
-
-	public Rebelde save(Optional<Rebelde> rebelde);
-
-	//public Optional<Rebelde> deleteRebelde(long id);
-
+	
 }

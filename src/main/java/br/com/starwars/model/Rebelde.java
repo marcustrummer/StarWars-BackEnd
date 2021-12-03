@@ -1,68 +1,43 @@
 package br.com.starwars.model;
 
-
-import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
-
+import javax.persistence.OneToOne;
 
 @Entity
-@Table(name = "tb_rebelde")
 public class Rebelde {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-
-	@NotNull(message = "O atributo nome deve conter pelo menos 5 caracteres")
-	@Size(min = 3, max = 30, message = "O atributo nome deve conter entre 5 e 15 caracteres")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
+	
 	private String nome;
-
-	@NotNull(message = "O atributo idade eh obrigatorio")
-	private int idade;
 	
+	private Integer idade;
 	
-	@NotNull(message = "O atributo genero deve ser M F ou O (Masculino/Feminino/Outro)")
-	@Size(min = 1, max = 1, message = "O atributo genero deve conter apenas 1 caracter")
-	private String genero;
-
-	 @Embedded
-	 private Localizacao localizacao;
+	private String genero;			// aqui seria melhor utilizar ENUM
+		
+	@OneToOne
+	private Inventario inventario;
 	
-	 @Embedded
-	 private Inventario inventario;
-	 
-	@Column(columnDefinition = "integer default 0")
-	private int strikes;
+	public Rebelde() {}
 	
-	
-
-
-	 
-
+	public Rebelde(String nome, Integer idade, String genero,  Inventario inventario) {
+		this.nome = nome;
+		this.idade = idade;
+		this.genero = genero;
+		this.inventario = inventario;
+	}
 	
 	
 	
-	
-	
-	
-	
-	
-	// GETTERS AND SETTERS
-
-	public long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -74,6 +49,14 @@ public class Rebelde {
 		this.nome = nome;
 	}
 
+	public Integer getIdade() {
+		return idade;
+	}
+
+	public void setIdade(Integer idade) {
+		this.idade = idade;
+	}
+
 	public String getGenero() {
 		return genero;
 	}
@@ -81,42 +64,8 @@ public class Rebelde {
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
-
-	public int getStrikes() {
-		return strikes;
-	}
-
-	public void setStrikes(int strikes) {
-		this.strikes = strikes;
-	}
-
-	public int getIdade() {
-		return idade;
-	}
-
-	public void setIdade(int idade) {
-		this.idade = idade;
-	}
-
-	public Inventario getInventario() {
-		return inventario;
-	}
-
-	public void setInventario(Inventario inventario) {
-		this.inventario = inventario;
-	}
-
-	public Localizacao getLocalizacao() {
-		return localizacao;
-	}
-
-	public void setLocalizacao(Localizacao localizacao) {
-		this.localizacao = localizacao;
-	}
 	
 	
 	
 	
-	
-
 }

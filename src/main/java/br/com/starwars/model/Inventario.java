@@ -1,146 +1,51 @@
 package br.com.starwars.model;
 
+import java.util.List;
 
-import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
-@Embeddable
+@Entity
 public class Inventario {
-	
-	
-	/*
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	*/
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
 	
-	
-	@NotNull(message = "O atributo tipoInventario do produto é obrigatório")
-	@Size(min = 3, message = "O atributo nome do produto deve min=3 caracteres")
-	private String tipoInventario;
-	
-	@Embedded
-	private Recurso recurso;
-	
-	
-	
-
-	public Recurso getRecurso() {
-		return recurso;
-	}
-
-	public void setRecurso(Recurso recurso) {
-		this.recurso = recurso;
-	}
+	@ManyToMany(fetch = FetchType.EAGER)
+	private List<Recurso> recursos;
 
 	public Inventario() {
 	}
+	
+	public Inventario(List<Recurso> recursos) {
+		this.recursos = recursos;
+	}
+	
+	public Inventario(Integer id, List<Recurso> recursos) {
+		this.id = id;
+		this.recursos = recursos;
+	}
 
-	public Inventario(Integer id, String tipoInventario, Rebelde rebelde, Recurso recurso) {
-		super();
-		//this.id = id;
-		this.tipoInventario = tipoInventario;
-	//  this.rebelde = rebelde;
-	//	this.recurso = recurso;
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public List<Recurso> getRecursos() {
+		return recursos;
+	}
+
+	public void setRecursos(List<Recurso> recursos) {
+		this.recursos = recursos;
 	}
 	
 	
-	
-	
-	/*         RELACIONAMENTO COM RECURSO
-	@NotNull(message = "O atributo nome do produto eh obrigatorio")
-	@Size(min = 3, max = 15, message = "O atributo nome do produto deve min=3 max=15 caracteres")
-	private String nomeProduto;
-	
-	@NotNull(message = "O atributo tipo do produto eh obrigatorio")
-	@Size(min = 3, max = 15, message = "O atributo tipo do produto deve min=3 max=15 caracteres")
-	private String tipoProduto;
-	
-	@NotNull(message = "O atributo pontuacao eh obrigatorio")
-	private double pontuacao;*/
-	
-
-
-	
-	/*
-	//RELACIONAMENTOS---------------------------------------------------------------------------------
-	
-	@ManyToOne
-	@JsonIgnoreProperties("inventario")
-	private Recurso recurso;
-	
-	@OneToOne
-	@JsonIgnoreProperties("inventario")
-	private Rebelde rebelde;
-	
-	//FIM DOS RELACIONAMENTOS--------------------------------------------------------------------------
-*/
-	
-	
-	
-	
-	
-	//Getters and Setters
-	
-	public String getTipoInventario() {
-		return tipoInventario;
-	}
-
-	public void setTipoInventario(String tipoInventario) {
-		this.tipoInventario = tipoInventario;
-	}
-/*
-	public Recurso getRecurso() {
-		return recurso;
-	}
-
-	public void setRecurso(Recurso recurso) {
-		this.recurso = recurso;
-	}
-
-	public Rebelde getRebelde() {
-		return rebelde;
-	}
-
-	public void setRebelde(Rebelde rebelde) {
-		this.rebelde = rebelde;
-	}*/
-
-
-	
-	
-	
-
-	
-	
-	
-	/*
-	public String getNomeProduto() {
-		return nomeProduto;
-	}
-
-	public void setNomeProduto(String nomeProduto) {
-		this.nomeProduto = nomeProduto;
-	}
-
-	public String getTipoProduto() {
-		return tipoProduto;
-	}
-
-	public void setTipoProduto(String tipoProduto) {
-		this.tipoProduto = tipoProduto;
-	}
-	
-	public double getPontuacao() {
-		return pontuacao;
-	}
-
-	public void setPontuacao(double pontuacao) {
-		this.pontuacao = pontuacao;
-	}
-	
-	*/
-
 }
