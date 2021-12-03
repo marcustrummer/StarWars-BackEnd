@@ -7,7 +7,11 @@ import br.com.starwars.model.Rebelde;
 
 public class RebeldeDTO {
 	
+	private Integer id;
 	
+	
+	
+
 	@Size(min = 2, max = 50, message = "O nome deve ter entre 2 e 50 caracteres")
 	private String nome;
 	
@@ -30,6 +34,14 @@ public class RebeldeDTO {
 		this.genero = genero;
 	
 		this.inventario = inventario;
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	
@@ -58,7 +70,7 @@ public class RebeldeDTO {
 	}
 
 	public Rebelde tranformaParaRebelde() {
-		return new Rebelde(nome, idade, genero, inventario);
+		return new Rebelde(id,nome, idade, genero);
 	}
 
 	public Inventario getInventario() {

@@ -60,6 +60,8 @@ public class Recurso {
 	public void setPontos(Integer pontos) {
 		this.pontos = pontos;
 	}
+
+
 	
 	
 }

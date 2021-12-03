@@ -25,11 +25,12 @@ public class Rebelde {
 	
 	public Rebelde() {}
 	
-	public Rebelde(String nome, Integer idade, String genero,  Inventario inventario) {
+	public Rebelde(Integer id, String nome, Integer idade, String genero) {
+		this.id = id;
 		this.nome = nome;
 		this.idade = idade;
 		this.genero = genero;
-		this.inventario = inventario;
+		
 	}
 	
 	

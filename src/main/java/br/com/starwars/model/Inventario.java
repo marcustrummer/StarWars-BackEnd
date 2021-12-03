@@ -18,6 +18,9 @@ public class Inventario {
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Recurso> recursos;
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	private Recurso recurso;
 
 	public Inventario() {
 	}
@@ -29,6 +32,11 @@ public class Inventario {
 	public Inventario(Integer id, List<Recurso> recursos) {
 		this.id = id;
 		this.recursos = recursos;
+	}
+
+	public Inventario(Integer id) {
+		// TODO Auto-generated constructor stub
+		this.id = id;
 	}
 
 	public Integer getId() {
@@ -46,6 +54,8 @@ public class Inventario {
 	public void setRecursos(List<Recurso> recursos) {
 		this.recursos = recursos;
 	}
+
+
 	
 	
 }
