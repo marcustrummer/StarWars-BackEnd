@@ -28,4 +28,38 @@ public class Recurso {
 		this.tipo_produto = tipo_produto;
 		this.pontos = pontos;
 	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getNome_produto() {
+		return nome_produto;
+	}
+
+	public void setNome_produto(String nome_produto) {
+		this.nome_produto = nome_produto;
+	}
+
+	public String getTipo_produto() {
+		return tipo_produto;
+	}
+
+	public void setTipo_produto(String tipo_produto) {
+		this.tipo_produto = tipo_produto;
+	}
+
+	public Integer getPontos() {
+		return pontos;
+	}
+
+	public void setPontos(Integer pontos) {
+		this.pontos = pontos;
+	}
+	
+	
 }

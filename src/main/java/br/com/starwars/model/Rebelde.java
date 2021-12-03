@@ -1,5 +1,6 @@
 package br.com.starwars.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,7 +20,7 @@ public class Rebelde {
 	
 	private String genero;			// aqui seria melhor utilizar ENUM
 		
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Inventario inventario;
 	
 	public Rebelde() {}
@@ -63,6 +64,14 @@ public class Rebelde {
 
 	public void setGenero(String genero) {
 		this.genero = genero;
+	}
+
+	public Inventario getInventario() {
+		return inventario;
+	}
+
+	public void setInventario(Inventario inventario) {
+		this.inventario = inventario;
 	}
 	
 	
