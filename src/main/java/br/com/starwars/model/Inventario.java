@@ -19,9 +19,7 @@ public class Inventario {
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Recurso> recursos;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
-	private Recurso recurso;
-
+	
 	public Inventario() {
 	}
 	
