@@ -12,8 +12,15 @@ public class InventarioService {
 	@Autowired
 	private InventarioRepository inventRepo;
 	
+	@Autowired
+	private RecursoService recursoService;
+	
 	public void saveInventario(Inventario inventario) {
+		
+		
 		inventRepo.save(inventario);
+		
+		
 	}
 	
 }

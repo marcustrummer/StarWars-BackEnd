@@ -13,8 +13,10 @@ import javax.persistence.ManyToMany;
 public class Inventario {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
+	
+	private String nome;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Recurso> recursos;
@@ -32,9 +34,10 @@ public class Inventario {
 		this.recursos = recursos;
 	}
 
-	public Inventario(Integer id) {
+	public Inventario(Integer id, String nome) {
 		// TODO Auto-generated constructor stub
 		this.id = id;
+		this.nome = nome;
 	}
 
 	public Integer getId() {
@@ -43,6 +46,16 @@ public class Inventario {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	
+	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public List<Recurso> getRecursos() {

@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Recurso {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	
 	private String nome_produto;

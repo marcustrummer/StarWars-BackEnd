@@ -42,10 +42,15 @@ public class RebeldeService {
 		obj.setId(null);
 		obj = rebeldeRepository.save(obj);
 		Recurso recurso = new Recurso(1,"Agua","Bebida",2);
-		Inventario inventario = new Inventario(1 );
+		salvarInventario.saveInventario(obj.getInventario());
+		//Inventario inventario = new Inventario(1 );
+		
+		
 		return obj;
 		
 	}
+	
+	
 	
 	
 	public Optional<Rebelde> cadastrarRebelde(Rebelde rebelde) {
@@ -63,8 +68,10 @@ public class RebeldeService {
 	
         public Rebelde fromDTO(RebeldeDTO objDTO) {
 		Rebelde rebelde = new Rebelde(objDTO.getId(), objDTO.getNome(), objDTO.getIdade(), objDTO.getGenero());
-		Recurso recurso = new Recurso(1,"Agua","Bebida",2);
+		Recurso recurso = new Recurso(null,"Agua","Bebida",2);
+		Inventario inventario = new Inventario(null, "ooo");
 		
+		rebelde.setInventario(inventario);
 		
 		return rebelde;
 		
