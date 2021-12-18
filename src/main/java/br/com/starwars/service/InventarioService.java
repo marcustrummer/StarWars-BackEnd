@@ -19,7 +19,7 @@ public class InventarioService {
 		
 		
 		inventRepo.save(inventario);
-		
+		//recursoService.saveRecurso(inventario.getRecursos());
 		
 	}
 	

@@ -41,9 +41,9 @@ public class RebeldeService {
 	public Rebelde insert(Rebelde obj) {
 		obj.setId(null);
 		obj = rebeldeRepository.save(obj);
-		Recurso recurso = new Recurso(1,"Agua","Bebida",2);
+		recursoRepository.saveAll(obj.getInventario().getRecursos());
 		salvarInventario.saveInventario(obj.getInventario());
-		//Inventario inventario = new Inventario(1 );
+		
 		
 		
 		return obj;
@@ -71,6 +71,7 @@ public class RebeldeService {
 		Recurso recurso = new Recurso(null,"Agua","Bebida",2);
 		Inventario inventario = new Inventario(null, "ooo");
 		
+		inventario.getRecursos().add(recurso);
 		rebelde.setInventario(inventario);
 		
 		return rebelde;

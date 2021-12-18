@@ -1,5 +1,6 @@
 package br.com.starwars.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -7,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 
 @Entity
@@ -19,8 +21,8 @@ public class Inventario {
 	private String nome;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
-	private List<Recurso> recursos;
-	
+	@JoinColumn(name="ID_Recurso")
+	private List<Recurso> recursos = new ArrayList<Recurso>();
 	
 	public Inventario() {
 	}
@@ -64,6 +66,10 @@ public class Inventario {
 
 	public void setRecursos(List<Recurso> recursos) {
 		this.recursos = recursos;
+	}
+	
+	public void adiciona(Recurso recursos) {
+		this.recursos.add(recursos);
 	}
 
 
