@@ -69,13 +69,13 @@ public class RebeldeService {
         public Rebelde fromDTO(RebeldeDTO objDTO) {
 		Rebelde rebelde = new Rebelde(objDTO.getId(), objDTO.getNome(), objDTO.getIdade(), objDTO.getGenero());
 		Recurso recurso = new Recurso(null,"Agua","Bebida",2);
-		Inventario inventario = new Inventario(null, "ooo");
+		Inventario inventario = new Inventario(objDTO.getId(), "ooo");
 		
 		inventario.getRecursos().add(recurso);
 		rebelde.setInventario(inventario);
 		
 		return rebelde;
 		
-	} 
 	
+        }
 }

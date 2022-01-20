@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 public class Rebelde {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
 	private String nome;
@@ -20,7 +20,7 @@ public class Rebelde {
 	
 	private String genero;			// aqui seria melhor utilizar ENUM
 		
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.MERGE)
 	private Inventario inventario;
 	
 	public Rebelde() {}
